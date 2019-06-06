@@ -44,6 +44,18 @@ class App extends React.Component {
         console.log('Sorry You Lose!');
       } else if (userChoice === 'Rock' && compChoice === 'Scissors') {
         console.log('You Win!');
+      } else if (userChoice === 'Paper' && compChoice === 'Rock') {
+        console.log('You Win');
+      } else if (userChoice === 'Paper' && compChoice === 'Paper') {
+        console.log('Tie');
+      } else if (userChoice === 'Paper' && compChoice === 'Scissors') {
+        console.log('Sorry You Lose');
+      } else if (userChoice === 'Scissors' && compChoice === 'Rock') {
+        console.log('Sorry You Lose');
+      } else if (userChoice === 'Scissors' && compChoice === 'Paper') {
+        console.log('You Win!');
+      } else if (userChoice === 'Scissors' && compChoice === 'Scissors') {
+        console.log('Tie');
       } else {
         console.log('default')
       }
