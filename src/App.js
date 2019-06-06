@@ -39,32 +39,32 @@ class App extends React.Component {
     const {userChoice, compChoice} = this.state
    
       if (userChoice === 'Rock' && compChoice === 'Rock') {
-        console.log('tie');
+        return ('Tie');
       } else if (userChoice === 'Rock' && compChoice === 'Paper') {
-        console.log('Sorry You Lose!');
+        return ('Sorry You Lose!');
       } else if (userChoice === 'Rock' && compChoice === 'Scissors') {
-        console.log('You Win!');
+        return ('You Win!');
       } else if (userChoice === 'Paper' && compChoice === 'Rock') {
-        console.log('You Win');
+        return ('You Win');
       } else if (userChoice === 'Paper' && compChoice === 'Paper') {
-        console.log('Tie');
+        return('Tie');
       } else if (userChoice === 'Paper' && compChoice === 'Scissors') {
-        console.log('Sorry You Lose');
+        return('Sorry You Lose!');
       } else if (userChoice === 'Scissors' && compChoice === 'Rock') {
-        console.log('Sorry You Lose');
+        return ('Sorry You Lose!');
       } else if (userChoice === 'Scissors' && compChoice === 'Paper') {
-        console.log('You Win!');
+        return ('You Win!');
       } else if (userChoice === 'Scissors' && compChoice === 'Scissors') {
-        console.log('Tie');
+        return('Tie');
       } else {
-        console.log('default')
+        return ('Default')
       }
   }
   
   render() {
     return (
       <>
-      <div>{this.finalResult()}</div>
+      
       <Container style={{ marginTop: "25px" }}>
         <Header as="h1">Rock|Paper|Scissors</Header>
         <br />
@@ -73,9 +73,11 @@ class App extends React.Component {
         <OptionBox name="Rock" img={rock} optionClick={this.optionClick}/>
         <OptionBox name="Paper" img={paper} optionClick={this.optionClick}/>
         <OptionBox name="Scissors" img={scissors} optionClick={this.optionClick}/>   
-        <div>your choice: {this.state.userChoice}</div>
-        <div>computer choice: {this.computerResult()}</div>   
+        
       </Container>
+        <div>Player Choice: {this.state.userChoice}</div>
+        <div>Computer: {this.computerResult()}</div>
+        <div>{this.finalResult()}</div>
       </>
 
       
