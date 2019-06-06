@@ -39,7 +39,11 @@ class App extends React.Component {
     const {userChoice, compChoice} = this.state
    
       if (userChoice === 'Rock' && compChoice === 'Rock') {
-        console.log('tie')
+        console.log('tie');
+      } else if (userChoice === 'Rock' && compChoice === 'Paper') {
+        console.log('Sorry You Lose!');
+      } else if (userChoice === 'Rock' && compChoice === 'Scissors') {
+        console.log('You Win!');
       } else {
         console.log('default')
       }
