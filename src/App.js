@@ -1,93 +1,82 @@
-import React from "react";
+import React, { useState } from "react";
 import OptionBox from "./OptionBox";
 import rock from "./Images/rock.jpg";
 import paper from "./Images/paper.jpeg";
 import scissors from "./Images/scissors.jpeg";
 import { Container, Header,} from "semantic-ui-react";
 
-class App extends React.Component {
-  state = { userChoice: null , compChoice: null };
+// class App extends React.Component {
+//   state = { userChoice: null , compChoice: null };
 
-  optionArr= ["Rock", "Paper", "Scissors"];
+function App() {
+  
+  const optionArr= ["Rock", "Paper", "Scissors"];
 
-  optionClick = (choice) => {
-    //this.state.userChoice
-    //const { userChoice } = this.state
-    this.setState({userChoice: choice, compChoice: this.optionArr[Math.floor(Math.random() * this.optionArr.length)]})
-  };
-
-  computerResult = () => {
-   return this.state.userChoice !== null ? <div>{this.state.compChoice}</div> : <div></div>
+  const [userChoice, setUserChoice] = useState()
+  const [compChoice, setCompChoice] = useState()
+  const [finalResult, setFinalResult] = useState()
+  
+  
+  const optionClick = (choice) => {
+    setUserChoice(choice)
+    setCompChoice(optionArr[Math.floor(Math.random() * optionArr.length)])
+    results()
   }
 
-  // finalResult = () => {
-  
-  //   const {userChoice, compChoice} = this.state
-  //   switch(userChoice, compChoice) {
-  //     case userChoice === 'Rock' && compChoice === 'Rock':
-  //         return console.log('tie')
-  //     case userChoice === 'Rock' && compChoice === 'Paper':
-  //         return console.log('lose')
-  //     default:
-  //         return console.log('default')
-    
-  // }
+  const computerResult = () => {
+   return userChoice !== null ? <div>{compChoice}</div> : <div></div>
+  }
 
-  // }
-
-  finalResult = () => {
-    const {userChoice, compChoice} = this.state
+  const results = () => {
+    // const {userChoice, compChoice} = this.state
    
       if (userChoice === 'Rock' && compChoice === 'Rock') {
-        return ('Tie');
+        setFinalResult('Tie')
       } else if (userChoice === 'Rock' && compChoice === 'Paper') {
-        return ('Sorry You Lose!');
+        setFinalResult('Sorry You Lose!');
       } else if (userChoice === 'Rock' && compChoice === 'Scissors') {
-        return ('You Win!');
+        setFinalResult('You Win!')
       } else if (userChoice === 'Paper' && compChoice === 'Rock') {
-        return ('You Win');
+        setFinalResult('You Win!')
       } else if (userChoice === 'Paper' && compChoice === 'Paper') {
-        return('Tie');
+        setFinalResult('Tie')
       } else if (userChoice === 'Paper' && compChoice === 'Scissors') {
-        return('Sorry You Lose!');
+        setFinalResult('Sorry You Lose!')
       } else if (userChoice === 'Scissors' && compChoice === 'Rock') {
-        return ('Sorry You Lose!');
+        setFinalResult('Sorry You Lose!')
       } else if (userChoice === 'Scissors' && compChoice === 'Paper') {
-        return ('You Win!');
+        setFinalResult('You Win!')
       } else if (userChoice === 'Scissors' && compChoice === 'Scissors') {
-        return('Tie');
+        setFinalResult('Tie')
       } else {
-        return ('Default')
+        setFinalResult ('Default')
       }
-  }
+    }
   
-  render() {
-    return (
-      <>
-      
-      <Container style={{ marginTop: "25px" }}>
+
+  return (
+    <>
+      <div>
+        <Container style={{ marginTop: "25px" }}>
         <Header as="h1">Rock|Paper|Scissors</Header>
         <br />
-        <Header as="h2">Player please make a selection</Header>
+        <Header as="h2">Please make a selection:</Header>
         <hr />
-        <OptionBox name="Rock" img={rock} optionClick={this.optionClick}/>
-        <OptionBox name="Paper" img={paper} optionClick={this.optionClick}/>
-        <OptionBox name="Scissors" img={scissors} optionClick={this.optionClick}/>   
+        <OptionBox name="Rock" img={rock} optionClick={optionClick}/>
+        <OptionBox name="Paper" img={paper} optionClick={optionClick}/>
+        <OptionBox name="Scissors" img={scissors} optionClick={optionClick}/>   
         
       </Container>
-        <div>Player Choice: {this.state.userChoice}</div>
-        <div>Computer: {this.computerResult()}</div>
-        <div>{this.finalResult()}</div>
-      </>
+      </div>
+
+        <div>Player Choice: {userChoice}</div>
+        <div>Computer: {compChoice}</div>
+        <div>Results: {finalResult}</div>
+
 
       
-
-      
-    );
-
-
-    
-  }
-}
+  </>
+  )     
+}; 
 
 export default App;

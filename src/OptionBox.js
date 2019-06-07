@@ -10,4 +10,20 @@ const OptionBox = (props) => (
   />
 );
 
+// playerScore = 0
+//   compScore = 0
+  
+//   Score = () {
+//     if ({finalResult} === 'You Win!') {
+//       playerScore += 1;
+//     } else if ({finalResult} === 'You Lose') {
+//       compScore += 1;
+//     } else {
+//       return ('')
+//     }
+//   }
+
+
+
+
 export default OptionBox;
