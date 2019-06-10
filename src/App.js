@@ -29,11 +29,11 @@ function App() {
 
   const score = () => {
     console.log(finalResult);
-    if ({ finalResult } === "You Win!") {
+    if (finalResult === "You Win!") {
       setWins(wins + 1);
-    } else if ({ finalResult } === "Sorry You Lose!") {
+    } else if (finalResult === "Sorry You Lose!") {
       setLosses(losses + 1);
-    } else {
+    } else if (finalResult === "Tie") {
       setTies(ties + 1);
     }
   };
